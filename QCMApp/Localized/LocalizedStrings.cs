@@ -1,6 +1,6 @@
 ﻿using QCMApp.Resources;
 
-namespace QCMApp
+namespace QCMApp.Localized
 {
     /// <summary>
     /// Permet d'accéder aux ressources de chaîne.
