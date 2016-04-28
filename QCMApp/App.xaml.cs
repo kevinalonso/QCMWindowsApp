@@ -7,6 +7,7 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using QCMApp.Resources;
+using MVVM.Service;
 
 namespace QCMApp
 {
@@ -67,12 +68,17 @@ namespace QCMApp
         // Ce code ne s'exécute pas lorsque l'application est réactivée
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
+            ServiceResolver.RegisterService<INavigationService>(new PhoneNavigationService(RootFrame));
         }
 
         // Code à exécuter lorsque l'application est activée (affichée au premier plan)
         // Ce code ne s'exécute pas lorsque l'application est démarrée pour la première fois
         private void Application_Activated(object sender, ActivatedEventArgs e)
         {
+            if(!e.IsApplicationInstancePreserved)
+            {
+                ServiceResolver.RegisterService<INavigationService>(new PhoneNavigationService(RootFrame));
+            }
         }
 
         // Code à exécuter lorsque l'application est désactivée (envoyée à l'arrière-plan)

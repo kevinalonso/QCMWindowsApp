@@ -7,13 +7,16 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using MVVM.Views;
+using QCMApp.ViewModels;
 
 namespace QCMApp.Views
 {
-    public partial class WelcomePage : PhoneApplicationPage
+    public partial class WelcomePage : MVVMPhonePage
     {
         public WelcomePage()
         {
+            this.ViewModel = new ViewModelWelcomePage();
             InitializeComponent();
         }
     }

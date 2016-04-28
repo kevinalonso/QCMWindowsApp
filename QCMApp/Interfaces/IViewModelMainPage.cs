@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MVVM.Interfaces;
 
-namespace QCMApp.Entity
+namespace QCMApp.Interfaces
 {
-    public class BadAnswer
+    public interface IViewModelMainPage : IViewModel
     {
     }
 }

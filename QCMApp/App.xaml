@@ -7,7 +7,9 @@
 
     <!--Ressources d'applications-->
     <Application.Resources>
-        <local:LocalizedStrings xmlns:local="clr-namespace:QCMApp" x:Key="LocalizedStrings"/>
+        <ResourceDictionary>
+            <local:LocalizedStrings xmlns:local="clr-namespace:QCMApp" x:Key="LocalizedStrings"/>
+        </ResourceDictionary>
     </Application.Resources>
 
     <Application.ApplicationLifetimeObjects>

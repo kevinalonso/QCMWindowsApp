@@ -1,4 +1,4 @@
-﻿<phone:PhoneApplicationPage
+﻿<mvvm:MVVMPhonePage
     x:Class="QCMApp.Views.QuestionPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -6,6 +6,7 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mvvm="clr-namespace:MVVM.Views;assembly=MVVM"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -34,7 +35,7 @@
         <!--ContentPanel - placez tout contenu supplémentaire ici-->
         <!--<Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">-->
         <StackPanel Grid.Row="1" Background="Green">
-            <TextBlock x:Name="blockQuestion" Text="TODO"/>
+            <TextBlock x:Name="blockQuestion" Text="{Binding Item}"/>
         </StackPanel>
         
         <StackPanel Grid.Row="2" Background="Gray">
@@ -42,7 +43,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="3" Background="Gray">
-            <CheckBox x:Name="chckAns2" Content=""/>
+            <CheckBox x:Name="chckAns2" Content="{Binding Item}"/>
         </StackPanel>
 
         <StackPanel  Grid.Row="4" Background="Gray">
@@ -50,7 +51,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="6" HorizontalAlignment="Right" Width="100">
-            <Button x:Name="btnNext" Content="{Binding Path=LocalizedResources.Instance.ButtonNext}" Background="Gray"/>
+            <Button x:Name="btnNext" Content="{Binding Path=LocalizedResources.Instance.ButtonNext}" Command="{Binding NextQuestionCommand}" Background="Gray"/>
         </StackPanel>
 
         <StackPanel Grid.Row="6" HorizontalAlignment="Center">
@@ -64,4 +65,4 @@
             <!--</Grid>-->
     </Grid>
 
-</phone:PhoneApplicationPage>
+</mvvm:MVVMPhonePage>
