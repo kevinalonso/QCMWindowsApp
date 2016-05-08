@@ -9,18 +9,15 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using MVVM.Views;
 using QCMApp.ViewModels;
-using QCMApp.Interfaces;
 
-namespace QCMApp.Views
+namespace QCMApp.Control
 {
-    public partial class QuestionPage : MVVMPhonePage
+    public partial class UserControlCheckBox : MVVMPhonePage
     {
-        public QuestionPage()
+        public UserControlCheckBox()
         {
-            this.ViewModel = new ViewModelQuestion();
-            
+            //this.ViewModel = new ViewModelGoodAnswer();
             InitializeComponent();
         }
-
     }
 }

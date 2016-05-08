@@ -19,6 +19,14 @@ namespace QCMApp.Entity
 
         private long _idQcm;
 
+        private GoodAnswer _goodAnswer;
+
+        private BadAnswer _badAnswer1;
+
+        private BadAnswer _badAnswer2;
+
+        
+
         #endregion
 
         #region Properties
@@ -45,6 +53,24 @@ namespace QCMApp.Entity
         {
             get { return _idQcm; }
             set { SetProperty(nameof(idQcm), ref _idQcm, value); }
+        }
+
+        public GoodAnswer goodAnswer
+        {
+            get { return _goodAnswer; }
+            set { SetProperty(nameof(goodAnswer), ref _goodAnswer, value); }
+        }
+
+        public BadAnswer badAnswer1
+        {
+            get { return _badAnswer1; }
+            set { SetProperty(nameof(badAnswer1), ref _badAnswer1, value); }
+        }
+
+        public BadAnswer badAnswer2
+        {
+            get { return _badAnswer2; }
+            set { SetProperty(nameof(badAnswer2), ref _badAnswer2, value); }
         }
 
         #endregion

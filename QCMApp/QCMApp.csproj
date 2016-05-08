@@ -95,10 +95,12 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Constant\GlobalConstant.cs" />
-    <Compile Include="Entity\BadAnswer.cs" />
-    <Compile Include="Entity\GoodAnswer.cs" />
-    <Compile Include="Entity\Qcm.cs" />
-    <Compile Include="Entity\Question.cs" />
+    <Compile Include="Control\Entity\BadAnswer.cs" />
+    <Compile Include="Control\Entity\GoodAnswer.cs" />
+    <Compile Include="Control\Entity\Qcm.cs" />
+    <Compile Include="Control\Entity\Question.cs" />
+    <Compile Include="Interfaces\IViewModelBadAnswer.cs" />
+    <Compile Include="Interfaces\IViewModelBadAnswers.cs" />
     <Compile Include="Interfaces\IViewModelGoodAnswer.cs" />
     <Compile Include="Interfaces\IViewModelGoodAnswers.cs" />
     <Compile Include="Interfaces\IViewModelMainPage.cs" />
@@ -115,6 +117,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Control\UserControlCheckBox.xaml.cs">
+      <DependentUpon>UserControlCheckBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\ViewModelBadAnswer.cs" />
+    <Compile Include="ViewModels\ViewModelBadAnswers.cs" />
     <Compile Include="ViewModels\ViewModelGoodAnswer.cs" />
     <Compile Include="ViewModels\ViewModelGoodAnswers.cs" />
     <Compile Include="ViewModels\ViewModelMain.cs" />
@@ -134,6 +141,10 @@
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
     <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\UserControlCheckBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

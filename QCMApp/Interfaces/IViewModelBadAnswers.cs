@@ -1,16 +1,16 @@
-﻿using System;
+﻿using MVVM.Interfaces;
+using QCMApp.Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using QCMApp.Entity;
-using MVVM.Interfaces;
 
 namespace QCMApp.Interfaces
 {
-    public interface IViewModelQuestions : IViewModelList<Question>
+    public interface IViewModelBadAnswers : IViewModelList<BadAnswer>
     {
         long IdQuestion { get; set; }
-        Question ItemQuestion { get; set; }
+        BadAnswer ItemBadAnswer { get; set; }
     }
 }

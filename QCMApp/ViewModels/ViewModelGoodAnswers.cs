@@ -37,11 +37,11 @@ namespace QCMApp.ViewModels
         public override void LoadData()
         {
             WebClient wc = new WebClient();
-            wc.DownloadStringCompleted += WebClient_DownloadQuestionCompleted;
+            wc.DownloadStringCompleted += WebClient_DownloadGoodAnswerCompleted;
             wc.DownloadStringAsync(new Uri(GlobalConstant.URL_GOODANSWER));
         }
 
-        public void WebClient_DownloadQuestionCompleted(object sender, DownloadStringCompletedEventArgs e)
+        public void WebClient_DownloadGoodAnswerCompleted(object sender, DownloadStringCompletedEventArgs e)
         {
             string jsonstream = e.Result;
             

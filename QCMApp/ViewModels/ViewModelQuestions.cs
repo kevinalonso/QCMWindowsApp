@@ -44,17 +44,12 @@ namespace QCMApp.ViewModels
             wc.DownloadStringCompleted += WebClient_DownloadQuestionCompleted;
             wc.DownloadStringAsync(new Uri(GlobalConstant.URL_QUESTION));
 
-            /*wc = new WebClient();
-            wc.DownloadStringCompleted += WebClient_DownloadGoodAnswersCompleted;
-            wc.DownloadStringAsync(new Uri(GlobalConstant.URL_GOODANSWER));*/
-
         }
 
         public void WebClient_DownloadQuestionCompleted(object sender, DownloadStringCompletedEventArgs e)
         {
             string jsonstream = e.Result;
-            //ViewModelGoodAnswers viewGoodAnswer = new ViewModelGoodAnswers();
-            //viewGoodAnswer.IdQuestion = this.IdQuestion;
+            
             //Get the name of array
             JObject tags = JObject.Parse(jsonstream);
 
@@ -77,35 +72,6 @@ namespace QCMApp.ViewModels
             OnDataLoaded();
             //_ViewModelGoodAnswers.LoadData();
         }
-
-        /*public void WebClient_DownloadGoodAnswersCompleted(object sender, DownloadStringCompletedEventArgs e)
-        {
-            string jsonstream = e.Result;
-            ViewModelGoodAnswers viewGoodAnswer = new ViewModelGoodAnswers();
-            viewGoodAnswer.IdQuestion = this.IdQuestion;
-            //Get the name of array
-            JObject tags = JObject.Parse(jsonstream);
-
-            //Get data in the array from JSON
-            JArray _goodAnswer = (JArray)tags["goodAnswers"];
-
-            foreach (var item in _goodAnswer)
-            {
-                GoodAnswer goodAnswers = new GoodAnswer();
-                if ((long)item[GlobalConstant.ID_QUESTION_TO_GOODANSWER] == this.IdQuestion)
-                {
-                    goodAnswers.id = (long)item[GlobalConstant.ID_GOODANSWER];
-                    goodAnswers.answerQuestion = item[GlobalConstant.GOODANSWER_NAME].ToString();
-                    goodAnswers.idQuestion = (long)item[GlobalConstant.ID_QUESTION_TO_GOODANSWER];
-
-                    viewGoodAnswer.ItemsSource.Add(goodAnswers);
-                   
-                    //ItemsSource.Add(goodAnswers);
-                }
-            }
-            ListGoodAnswers = new List<GoodAnswer>(viewGoodAnswer.ItemsSource);
-            OnDataLoaded();
-        }*/
 
         #endregion
     }

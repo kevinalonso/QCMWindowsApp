@@ -1,12 +1,13 @@
 ﻿<mvvm:MVVMPhonePage
     x:Class="QCMApp.Views.QuestionPage"
+    xmlns:local="clr-namespace:QCMApp.Control"
+    xmlns:mvvm="clr-namespace:MVVM.Views;assembly=MVVM"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:mvvm="clr-namespace:MVVM.Views;assembly=MVVM"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -15,7 +16,7 @@
     shell:SystemTray.IsVisible="True">
 
     <!--LayoutRoot est la grille racine où tout le contenu de la page est placé-->
-    <Grid x:Name="LayoutRoot" Background="Black">
+    <Grid x:Name="LayoutRoot" Background="Black" Height="768" VerticalAlignment="Top">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="200"/>
@@ -35,20 +36,28 @@
         <!--ContentPanel - placez tout contenu supplémentaire ici-->
         <!--<Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">-->
         <StackPanel Grid.Row="1" Background="Green">
-            <TextBlock x:Name="blockQuestion" Text="{Binding Item}"/>
+            <TextBlock x:Name="blockQuestion" Text="{Binding Item.textQuestion}"/>
         </StackPanel>
-        
+
         <StackPanel Grid.Row="2" Background="Gray">
-            <CheckBox x:Name="chckAns1" Content=""/>
+            <CheckBox x:Name="chckAns1" IsChecked="{Binding IsCheckedBadAnswer1, Mode=TwoWay}" Content="{Binding Item.badAnswer1.badAnswer}"/>
         </StackPanel>
 
         <StackPanel Grid.Row="3" Background="Gray">
-            <CheckBox x:Name="chckAns2" Content="{Binding Item}"/>
+            <CheckBox x:Name="chckAns2" Content="{Binding Item.goodAnswer.answerQuestion}"/>
         </StackPanel>
 
         <StackPanel  Grid.Row="4" Background="Gray">
-            <CheckBox x:Name="chckAns3" Content=""/>
+            <CheckBox x:Name="chckAns3" IsChecked="{Binding IsCheckedBadAnswer2, Mode=TwoWay}" Content="{Binding Item.badAnswer2.badAnswer}"/>
         </StackPanel>
+
+        <StackPanel Grid.Row="5">
+            <Button x:Name="btnSend" Content="Envoyer" Command="{Binding SendAnswerCommand}" Background="Gray" Height="100"/>
+        </StackPanel>
+
+        <!--<StackPanel Grid.Row="0">
+            <local:UserControlCheckBox x:Name="CheckAnswer"/>
+        </StackPanel>-->
 
         <StackPanel Grid.Row="6" HorizontalAlignment="Right" Width="100">
             <Button x:Name="btnNext" Content="{Binding Path=LocalizedResources.Instance.ButtonNext}" Command="{Binding NextQuestionCommand}" Background="Gray"/>
@@ -59,7 +68,7 @@
         </StackPanel>
 
         <StackPanel Width="100" HorizontalAlignment="Left" Grid.Row="6">
-            <Button x:Name="btnPrev" Content="{Binding Path=LocalizedResources.Instance.ButtonPrev}" Background="Gray"/>
+            <Button x:Name="btnPrev" Content="{Binding Path=LocalizedResources.Instance.ButtonPrev}" Command="{Binding PrevQuestionCommand}" Background="Gray"/>
         </StackPanel>
 
             <!--</Grid>-->

@@ -16,6 +16,7 @@ namespace QCMApp.Constant
         public const string URL_QCM = "http://192.168.1.14/app_dev.php/api/all/qcm";
         public const string URL_QUESTION = "http://192.168.1.14/app_dev.php/api/all/question";
         public const string URL_GOODANSWER = "http://192.168.1.14/app_dev.php/api/all/good/answer";
+        public const string URL_BADANSWER = "http://192.168.1.14/app_dev.php/api/all/bad/answer";
 
         #endregion
 
@@ -60,6 +61,14 @@ namespace QCMApp.Constant
         public const string ID_GOODANSWER = "id";
         public const string GOODANSWER_NAME = "answerQuestion";
         public const string ID_QUESTION_TO_GOODANSWER = "idQuestion";
+
+        #endregion
+
+        #region BadAnswer JSON
+
+        public const string ID_BADANSWER = "id";
+        public const string BADANSWER_NAME = "badAnswerQuestion";
+        public const string ID_QUESTION_TO_BADANSWER = "idQuestion";
 
         #endregion
 
