@@ -12,6 +12,8 @@ using QCMApp.Constant;
 using QCMApp.Views;
 using MVVM.Interfaces;
 using System.ComponentModel;
+using System.Windows;
+using QCMApp.Post;
 
 namespace QCMApp.ViewModels
 {
@@ -24,11 +26,16 @@ namespace QCMApp.ViewModels
         private ViewModelQuestions _ViewModelQuestions;
         private DelegateCommand _NextQuestionCommand;
         private DelegateCommand _PrevQuestionCommand;
+        private DelegateCommand _SendAnswerCommand;
         private int nextValue = 0;
         private bool _IsSelectedBadAnswer;
         public bool _IsSelectedGoodAnswer;
+        public bool _buttonVisible;
         public BadAnswer getBadAnswer { get; set; }
         public GoodAnswer getGoodAnswer { get; set; }
+        public long IdUser { get; set; }
+
+        List<UserAnswer> resultAnswers = new List<UserAnswer>();
         
 
         #endregion
@@ -40,6 +47,7 @@ namespace QCMApp.ViewModels
         public IViewModelBadAnswers ViewModelBadAnswers => _ViewModelBadAnswers;
         public DelegateCommand NextQuestionCommand => _NextQuestionCommand;
         public DelegateCommand PrevQuestionCommand => _PrevQuestionCommand;
+        public DelegateCommand SendAnswerCommand => _SendAnswerCommand;
 
         #endregion
 
@@ -52,6 +60,7 @@ namespace QCMApp.ViewModels
             _ViewModelBadAnswers = new ViewModelBadAnswers();
             _NextQuestionCommand = new DelegateCommand(ExecuteNextQuestionCommand, CanExecuteNextQuestionCommand);
             _PrevQuestionCommand = new DelegateCommand(ExecutePrevQuestionCommand, CanExecutePrevQuestionCommand);
+            _SendAnswerCommand = new DelegateCommand(ExecuteSendAnswerCommand, CanExecuteSendAnswerCommand);
         }
 
         #endregion
@@ -72,9 +81,20 @@ namespace QCMApp.ViewModels
             return true;
         }
 
+        #endregion
+
         #region PrevQuestionCommand
 
         private bool CanExecutePrevQuestionCommand(object parameter)
+        {
+            return true;
+        }
+
+        #endregion
+
+        #region SendAnswerCommand
+
+        private bool CanExecuteSendAnswerCommand(object parameter)
         {
             return true;
         }
@@ -87,14 +107,48 @@ namespace QCMApp.ViewModels
         /// <param name="parameter"></param>
         private void ExecuteNextQuestionCommand(object parameter)
         {
-            /*if (yourBoolVariableContainingPropertyValue == true)
+            if(_ViewModelQuestions.ItemsSource.Count() == resultAnswers.Count())
+            {
+
+                this.Item.textQuestion = GlobalConstant.END_QCM;
+                this.Item.goodAnswer.answerQuestion = GlobalConstant.END_QCM;
+                this.Item.badAnswer1.badAnswer = GlobalConstant.END_QCM;
+                this.Item.badAnswer2.badAnswer = GlobalConstant.END_QCM;
+            }
+            else
+            {
+                //Add answer selected to list for send after with POST method
+                if (!_IsSelectedBadAnswer || !_IsSelectedGoodAnswer)
+                {
+                    if (getBadAnswer != null)
+                    {
+                        UserAnswer userAnswer = new UserAnswer();
+
+                        userAnswer.idQcm = Item.idQcm;
+                        userAnswer.idQuestion = Item.id;
+                        userAnswer.idAnswer = getBadAnswer.id;
+
+                        resultAnswers.Add(userAnswer);
+
+                    }
+                    else
+                    {
+                        UserAnswer userAnswer = new UserAnswer();
+
+                        userAnswer.idQcm = Item.idQcm;
+                        userAnswer.idQuestion = Item.id;
+                        userAnswer.idAnswer = getGoodAnswer.id;
+
+                        resultAnswers.Add(userAnswer);
+                    }
+                }
+            }
+
+            //Get the next Question
+            nextValue++;
+            if (nextValue < _ViewModelQuestions.ItemsSource.Count())
             {
                 
-            }*/
-            //Get the next Question
-            if (nextValue != _ViewModelQuestions.ItemsSource.Count())
-            {
-                nextValue++;
                 this.Item = _ViewModelQuestions.ItemsSource.ElementAt<Question>(nextValue);
 
                 _ViewModelGoodAnswers.IdQuestion = this.Item.id;
@@ -110,13 +164,8 @@ namespace QCMApp.ViewModels
                 {
                     this.Item.badAnswer1 = _ViewModelBadAnswers.ItemsSource.FirstOrDefault();
                     this.Item.badAnswer2 = _ViewModelBadAnswers.ItemsSource.LastOrDefault();
+                   
                 };
-            }
-            else
-            {
-                /*Microsoft.Phone.Shell.ShellToast toast = new Microsoft.Phone.Shell.ShellToast();
-                toast.Title = GlobalConstant.END_QCM;
-                toast.Show();*/
             }
            
         }
@@ -146,6 +195,17 @@ namespace QCMApp.ViewModels
             }
         }
 
+        private void ExecuteSendAnswerCommand(object parameter)
+        {
+            PostData post = new PostData();
+            foreach(UserAnswer item in resultAnswers)
+            {
+                post.Post(item);
+            }
+
+        }
+
+        #region CheckBox Value
         public bool IsCheckedBadAnswer1
         {
             get
@@ -154,8 +214,6 @@ namespace QCMApp.ViewModels
             }
             set
             {
-                //load value from last checked/unchcked value
-                //if (yourBoolVariableContainingPropertyValue = value) return;
                 _IsSelectedBadAnswer = value;
                 if (_IsSelectedBadAnswer == true)
                 {
@@ -172,8 +230,6 @@ namespace QCMApp.ViewModels
             }
             set
             {
-                //load value from last checked/unchcked value
-                //if (yourBoolVariableContainingPropertyValue = value) return;
                 _IsSelectedBadAnswer = value;
                 if (_IsSelectedBadAnswer == true)
                 {
@@ -190,17 +246,28 @@ namespace QCMApp.ViewModels
             }
             set
             {
-                //load value from last checked/unchcked value
-                //if (yourBoolVariableContainingPropertyValue = value) return;
                 _IsSelectedGoodAnswer = value;
-                //getBadAnswer = _IsSelectedGoodAnswer ? this.Item.goodAnswer;
                 if(_IsSelectedGoodAnswer == true)
                 {
                     getGoodAnswer = this.Item.goodAnswer;
                 }
             }
         }
+        #endregion
+
+        #region Button Visible
+        public bool isVisible
+        {
+            get { return _buttonVisible; }
+            set
+            {
+                _buttonVisible = value;
+                OnPropertyChanged("isVisible");
+            }
+        }
+
+        #endregion
 
     }
-    #endregion
+   
 }

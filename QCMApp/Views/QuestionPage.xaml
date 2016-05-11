@@ -52,7 +52,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="5">
-            <Button x:Name="btnSend" Content="Envoyer" Command="{Binding SendAnswerCommand}" Background="Gray" Height="100"/>
+            <Button x:Name="btnSend" Content="Envoyer" Command="{Binding SendAnswerCommand}" Visibility="{Binding isVisible}" Background="Gray" Height="100"/>
         </StackPanel>
 
         <!--<StackPanel Grid.Row="0">
@@ -60,7 +60,8 @@
         </StackPanel>-->
 
         <StackPanel Grid.Row="6" HorizontalAlignment="Right" Width="100">
-            <Button x:Name="btnNext" Content="{Binding Path=LocalizedResources.Instance.ButtonNext}" Command="{Binding NextQuestionCommand}" Background="Gray"/>
+            <!--{Binding Path=LocalizedResources.Instance.ButtonNext}-->
+            <Button x:Name="btnNext" Content="SUIV" Command="{Binding NextQuestionCommand}" Background="Gray"/>
         </StackPanel>
 
         <StackPanel Grid.Row="6" HorizontalAlignment="Center">
@@ -68,7 +69,8 @@
         </StackPanel>
 
         <StackPanel Width="100" HorizontalAlignment="Left" Grid.Row="6">
-            <Button x:Name="btnPrev" Content="{Binding Path=LocalizedResources.Instance.ButtonPrev}" Command="{Binding PrevQuestionCommand}" Background="Gray"/>
+            <!--{Binding Path=LocalizedResources.Instance.ButtonPrev}-->
+            <Button x:Name="btnPrev" Content="Prev" Command="{Binding PrevQuestionCommand}" Background="Gray"/>
         </StackPanel>
 
             <!--</Grid>-->

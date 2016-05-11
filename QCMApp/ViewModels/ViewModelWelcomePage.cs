@@ -23,6 +23,7 @@ namespace QCMApp.ViewModels
         private ViewModelGoodAnswer _ViewModelGoodAnswer;
         private ViewModelBadAnswer _ViewModelBadAnswer;
 
+
         #endregion
 
         #region Properties
@@ -130,31 +131,19 @@ namespace QCMApp.ViewModels
                 vm.ViewModelQuestions.DataLoaded += (sender, args) =>
                 {
                     vm.Item = vm.ViewModelQuestions.ItemsSource.FirstOrDefault();
-                    //vm.ViewModelGoodAnswers.LoadData();
-                    //vm.ViewModelGoodAnswers.ItemGoodAnswer = vm.ViewModelGoodAnswers.ItemsSource.FirstOrDefault();
+                    
                 };
 
                 vGoodAnswer.ViewModelGoodAnswers.DataLoaded += (sender, args) =>
                 {
-                    //vGoodAnswer.Item = vGoodAnswer.ViewModelGoodAnswers.ItemsSource.FirstOrDefault();
+                   
                     vm.Item.goodAnswer = vGoodAnswer.ViewModelGoodAnswers.ItemsSource.FirstOrDefault();
-
-
                 };
 
                 vBadAnswer.ViewModelBadAnswers.DataLoaded += (sender, args) =>
                 {
-                    //vBadAnswer.Item = vBadAnswer.ViewModelBadAnswers.ItemsSource.FirstOrDefault();
-                    //vBadAnswer.Item = vBadAnswer.ViewModelBadAnswers.ItemsSource.LastOrDefault();
                     vm.Item.badAnswer1 = vBadAnswer.ViewModelBadAnswers.ItemsSource.FirstOrDefault();
                     vm.Item.badAnswer2 = vBadAnswer.ViewModelBadAnswers.ItemsSource.LastOrDefault();
-                    /*CheckBox cb = new CheckBox();
-                    StackPanel panel = new StackPanel();
-                    cb.Name = "mdr";
-                    cb.Content = cb.Name.ToString();
-                    panel.Children.Add(cb);
-
-                    Grid.SetRow(cb,5);*/
 
                 };
 

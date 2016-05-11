@@ -34,35 +34,39 @@
 
         <!--TitlePanel contient le nom de l'application et le titre de la page-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Grid.Column="1" Margin="12,17,0,28">
-            <TextBlock Text="{Binding Path=LocalizedResources.Instance.TitleApp}" Style="{StaticResource PhoneTextTitle1Style}"/>
+            <!--{Binding Path=LocalizedResources.Instance.TitleApp}-->
+            <TextBlock Text="QCM App" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
         
         <!--<Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">-->
         
         <!--Login-->
         <StackPanel Grid.Row="1" Background="Green">
-            <TextBlock Text="{Binding Path=LocalizedResources.Instance.Login}" Grid.Row="1"/>
+            <!--{Binding Path=LocalizedResources.Instance.Login}-->
+            <TextBlock Text="Login" Grid.Row="1"/>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="1" Background="Green">
-            <TextBox x:Name="txtLogin" Text=""/>
+            <TextBox x:Name="txtLogin" Text="{Binding Logintxt, Mode=TwoWay}"/>
         </StackPanel>
 
         <!--Password-->
         <StackPanel Grid.Row="2" Background="Green">
-            <TextBlock Text="{Binding Path=LocalizedResources.Instance.Password}"/>
+            <!--{Binding Path=LocalizedResources.Instance.Password}-->
+            <TextBlock Text="Mdp"/>
         </StackPanel>
         <StackPanel  Grid.Column="1" Grid.Row="2" Background="Green">
-            <TextBox x:Name="txtPassword" Text=""/>
+            <TextBox x:Name="txtPassword" Text="{Binding Passwordtxt,Mode=TwoWay}"/>
         </StackPanel>
         
         <!--Connection-->
-        <StackPanel  Grid.Row="6" Grid.Column="1" Width="200" HorizontalAlignment="Left">
-            <Button x:Name="btnexit" Content="{Binding Path=LocalizedResources.Instance.Exit}" Background="Gray"/>
-        </StackPanel>
+        <!--<StackPanel  Grid.Row="6" Grid.Column="1" Width="200" HorizontalAlignment="Left">
+            <Button x:Name="btnexit" Content="{Binding Path=LocalizedResources.Instance.Exit}" Background="Gray" HorizontalAlignment="Right" Width="200"/>
+        </StackPanel>-->
         
         <!--Exit-->
         <StackPanel Grid.Row="6" Grid.Column="1" Width="200" HorizontalAlignment="Right">
-            <Button x:Name="btnConnection" Content="{Binding Path=LocalizedResources.Instance.Connection}" Command="{Binding ConnectionCommand}" Background="Gray"/>
+            <!--{Binding Path=LocalizedResources.Instance.Connection}-->
+            <Button x:Name="btnConnection" Content="Connexin" Command="{Binding ConnectionCommand}" Background="Gray"/>
         </StackPanel>
 
         <!--</Grid>-->

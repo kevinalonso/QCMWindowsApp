@@ -95,10 +95,13 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Constant\GlobalConstant.cs" />
-    <Compile Include="Control\Entity\BadAnswer.cs" />
-    <Compile Include="Control\Entity\GoodAnswer.cs" />
-    <Compile Include="Control\Entity\Qcm.cs" />
-    <Compile Include="Control\Entity\Question.cs" />
+    <Compile Include="Entity\BadAnswer.cs" />
+    <Compile Include="Entity\GoodAnswer.cs" />
+    <Compile Include="Entity\Qcm.cs" />
+    <Compile Include="Entity\Question.cs" />
+    <Compile Include="Entity\User.cs" />
+    <Compile Include="Entity\UserAnswer.cs" />
+    <Compile Include="Hash\HashString.cs" />
     <Compile Include="Interfaces\IViewModelBadAnswer.cs" />
     <Compile Include="Interfaces\IViewModelBadAnswers.cs" />
     <Compile Include="Interfaces\IViewModelGoodAnswer.cs" />
@@ -106,11 +109,16 @@
     <Compile Include="Interfaces\IViewModelMainPage.cs" />
     <Compile Include="Interfaces\IViewModelQuestions.cs" />
     <Compile Include="Interfaces\IViewModelQuestion.cs" />
+    <Compile Include="Interfaces\IViewModelUser.cs" />
+    <Compile Include="Interfaces\IViewModelUsers.cs" />
     <Compile Include="Interfaces\IViewModelWelcomePage.cs" />
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pameter\ParameterObject.cs" />
+    <Compile Include="Pameter\Parameters.cs" />
+    <Compile Include="Post\PostData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\AppResources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -127,6 +135,8 @@
     <Compile Include="ViewModels\ViewModelMain.cs" />
     <Compile Include="ViewModels\ViewModelQuestion.cs" />
     <Compile Include="ViewModels\ViewModelQuestions.cs" />
+    <Compile Include="ViewModels\ViewModelUser.cs" />
+    <Compile Include="ViewModels\ViewModelUsers.cs" />
     <Compile Include="ViewModels\ViewModelWelcomePage.cs" />
     <Compile Include="Views\QuestionPage.xaml.cs">
       <DependentUpon>QuestionPage.xaml</DependentUpon>
